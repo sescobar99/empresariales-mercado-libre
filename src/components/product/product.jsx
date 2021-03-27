@@ -26,6 +26,7 @@ const Card = ({ id, title, thumbnail, price, sellerID, sellerNick, redirectHandl
       
       <p className="seller">{sellerID}</p>
       <p className="seller">{sellerNick}</p>
+      <a href={"https://api.mercadolibre.com/items/" + id }>Item API</a>
     </div>
     // {/* </Link>  */}
   

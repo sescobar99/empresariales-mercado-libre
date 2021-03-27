@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src={"https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/117394139_1077892559272086_1045790931019337628_o.jpg?_nc_cat=102&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeFtbY7Zl4BFC__0reGeKFMqRq16EPzgbkZGrXoQ_OBuRvhms7CFgHh6nJCtSzKum64hrTVynoYZA2QhulTBP7iQ&_nc_ohc=GoVeAwS2IZsAX-vPgTm&_nc_ht=scontent.feoh1-1.fna&oh=14f9c1c431395083c1dc97751aad0289&oe=6082781B"} alt="En construccion"/>
+      {/* <img width={"400px"} height={"400px"} src={"https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/117394139_1077892559272086_1045790931019337628_o.jpg?_nc_cat=102&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeFtbY7Zl4BFC__0reGeKFMqRq16EPzgbkZGrXoQ_OBuRvhms7CFgHh6nJCtSzKum64hrTVynoYZA2QhulTBP7iQ&_nc_ohc=GoVeAwS2IZsAX-vPgTm&_nc_ht=scontent.feoh1-1.fna&oh=14f9c1c431395083c1dc97751aad0289&oe=6082781B"} alt="En construccion"/> */}
       <h1>Sescobar Mercado Libre</h1>
       <form onSubmit={submitHandler}>
         <input type="search" onChange={changeHandler} value={valueInput}></input>
