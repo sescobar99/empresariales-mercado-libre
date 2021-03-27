@@ -1,0 +1,37 @@
+.product{
+    width: 180px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 1px rgb(175, 162, 162);
+    cursor: pointer;
+    text-decoration: none;
+    color:black;
+}
+
+.product:hover{
+    background-color:rgb(165, 194, 233);
+}
+
+.img{
+    width:100px;
+    height:100px;
+    margin-bottom: 10px;
+}
+
+p{
+    margin-bottom: 10px;
+}
+
+.title{
+    font-size: .8em;
+}
+
+.price{
+    font-weight: bold;
+}
+
+.seller{
+    font-size: .7em;
+    color: rgb(124, 121, 121);
+    word-wrap: break-word;
+}

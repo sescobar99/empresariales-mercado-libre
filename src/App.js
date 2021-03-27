@@ -2,6 +2,8 @@
 import './App.css';
 import {useState,useEffect} from "react"; //importando hooks de react
 import productService from "./services/products";
+import sellerService from './services/seller';
+import Product from './components/product/product';
 // import sellerService from "./services/seller";
 
 function App() {
@@ -26,18 +28,25 @@ function App() {
   
   //hook de react
   useEffect(() => {
-    productService.getProducts(searchTerm).then(result => {
-      setProducts(result.results)}
-      );
-    console.log("efecto");
-    // let 
+    productService.getProducts(searchTerm).then( result => {
+      let products = result.results
+      let updatedProducts = products.map( product => {
+        sellerService.getSeller(product.seller.id).then(result => {
+          console.log(result.nickname);
+          product.seller.nickname  = result.nickname;
+        });
+        return product;
+      });
+      setProducts(updatedProducts)
+    });
+    // console.log("efecto");
   },[searchTerm]);
   //Cada vez que hay un cambio de estado react re-renderiza el componente que cambio
   //lo que hay dentro de [] se va a-renderizar con cada cambio
   //Cada que se actulaiza lo que hay en [] se ren
   
   //Un componente se renderiza cada 
-  console.log("render");
+  // console.log("render");
 
 
   return (
@@ -48,7 +57,22 @@ function App() {
         <input type="search" onChange={changeHandler} value={valueInput}></input>
       </form>
 
-      {products.map(product => {
+      <div className="products-flex">
+        {products.map(product => (
+          <Product
+            key={product.id}
+            id={product.id}
+            thumbnail={product.thumbnail}
+            title={product.title}
+            price={product.price}
+            sellerID={product.seller.id}
+            sellerNick={product.seller.nickname}
+            // redirectHandler={redirectHandler}
+          ></Product>
+        ))}
+      </div>
+
+      {/* {products.map(product => {
         return (
         <div key={product.id}>
           <p>{product.title}</p>
@@ -56,9 +80,11 @@ function App() {
               <img src={product.thumbnail} alt="Thumbnail" />
             </a>
           <p>${product.price}</p>
+          <p>{product.seller.nickname}</p>
+          <p>{product.seller.id}</p>
         </div>
         )
-      })}
+      })} */}
       {/* En react cada hijo de un arreglo deberia tener una key(id unico) */}
     </div>
   );
