@@ -9,4 +9,11 @@ const getProducts = (searchTerm) => {
 
 }
 
-export default {getProducts}
+const getProduct = (id) => {
+    return fetch(`https://api.mercadolibre.com/items/${id}`)
+    .then((response) => response.json())
+    .then((products) => products);
+
+}
+
+export default {getProducts, getProduct}
