@@ -1,7 +1,8 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import {useState,useEffect} from "react"; //importando hooks de react
 import productService from "./services/products";
+// import sellerService from "./services/seller";
 
 function App() {
   const [valueInput, setValueInput] = useState(""); //useState tiene ¿atributos? (dos cositas),Base conceptual de react: manejo de estado
@@ -25,8 +26,11 @@ function App() {
   
   //hook de react
   useEffect(() => {
-    productService.getProducts(searchTerm).then(result => setProducts(result.results));
+    productService.getProducts(searchTerm).then(result => {
+      setProducts(result.results)}
+      );
     console.log("efecto");
+    // let 
   },[searchTerm]);
   //Cada vez que hay un cambio de estado react re-renderiza el componente que cambio
   //lo que hay dentro de [] se va a-renderizar con cada cambio
@@ -38,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src={"https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/117394139_1077892559272086_1045790931019337628_o.jpg?_nc_cat=102&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeFtbY7Zl4BFC__0reGeKFMqRq16EPzgbkZGrXoQ_OBuRvhms7CFgHh6nJCtSzKum64hrTVynoYZA2QhulTBP7iQ&_nc_ohc=GoVeAwS2IZsAX-vPgTm&_nc_ht=scontent.feoh1-1.fna&oh=14f9c1c431395083c1dc97751aad0289&oe=6082781B"}/>
+      <img src={"https://scontent.feoh1-1.fna.fbcdn.net/v/t1.0-9/117394139_1077892559272086_1045790931019337628_o.jpg?_nc_cat=102&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeFtbY7Zl4BFC__0reGeKFMqRq16EPzgbkZGrXoQ_OBuRvhms7CFgHh6nJCtSzKum64hrTVynoYZA2QhulTBP7iQ&_nc_ohc=GoVeAwS2IZsAX-vPgTm&_nc_ht=scontent.feoh1-1.fna&oh=14f9c1c431395083c1dc97751aad0289&oe=6082781B"} alt="En construccion"/>
       <h1>Sescobar Mercado Libre</h1>
       <form onSubmit={submitHandler}>
         <input type="search" onChange={changeHandler} value={valueInput}></input>
@@ -49,7 +53,7 @@ function App() {
         <div key={product.id}>
           <p>{product.title}</p>
             <a href={"https://api.mercadolibre.com/items/" + product.id}>
-              <img src={product.thumbnail}/>
+              <img src={product.thumbnail} alt="Thumbnail" />
             </a>
           <p>${product.price}</p>
         </div>

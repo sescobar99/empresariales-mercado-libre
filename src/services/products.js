@@ -12,7 +12,7 @@ const getProducts = (searchTerm) => {
 const getProduct = (id) => {
     return fetch(`https://api.mercadolibre.com/items/${id}`)
     .then((response) => response.json())
-    .then((products) => products);
+    .then((product) => product);
 
 }
 
